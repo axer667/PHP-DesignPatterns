@@ -1,0 +1,9 @@
+{
+  "autoload": {
+    "psr-4": {
+      "templates\\creational\\": "templates/creational",
+      "tempaltes\\structural\\": "templates/structural",
+      "templates\\behavioral\\": "templates/behavioral"
+    }
+  }
+}

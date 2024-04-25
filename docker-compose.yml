@@ -1,0 +1,27 @@
+version: '3'
+services:
+    nginx:
+        build: ./images/nginx
+        ports:
+            - "80:80"
+            - "443:443"
+        volumes:
+            - ./hosts:/etc/nginx/conf.d
+            - ./www:/var/www
+            - ./logs/nginx:/var/log/nginx
+        links:
+            - php
+        depends_on:
+            - php
+    php:
+        build:
+            context: .
+            dockerfile: ./images/php/Dockerfile
+        volumes:
+            - ./www:/var/www
+
+    composer:
+        build: ./images/composer
+        volumes:
+            - ./www:/var/www/html
+        tty: true
